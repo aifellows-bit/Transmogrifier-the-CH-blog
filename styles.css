@@ -1,0 +1,303 @@
+/* ============================================
+   The Transmogrifier — a Calvin & Hobbes fan blog
+   Hand-drawn newspaper-comic vibe, no images needed
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Kalam:wght@700&display=swap');
+
+:root {
+  --paper: #faf5ea;
+  --paper-dark: #f2ead8;
+  --ink: #1c1a17;
+  --wagon-red: #c8402a;
+  --spiff-gold: #e8a020;
+  --sky: #4a7fa5;
+  --shadow: 5px 5px 0 rgba(28, 26, 23, 0.9);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--paper);
+  background-image: radial-gradient(rgba(28,26,23,0.05) 1px, transparent 1.5px);
+  background-size: 22px 22px;
+  color: var(--ink);
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.06rem;
+  line-height: 1.7;
+}
+
+/* ---------- Masthead ---------- */
+
+header.masthead {
+  border-bottom: 4px solid var(--ink);
+  padding: 2.5rem 1rem 1.5rem;
+  text-align: center;
+  background: var(--paper-dark);
+}
+
+.masthead h1 {
+  font-family: 'Kalam', 'Comic Sans MS', cursive;
+  font-size: clamp(2.4rem, 7vw, 4.2rem);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  transform: rotate(-1.2deg);
+}
+
+.masthead h1 a { color: var(--ink); text-decoration: none; }
+.masthead h1 .zap { color: var(--wagon-red); }
+
+.masthead .tagline {
+  font-family: 'Patrick Hand', cursive;
+  font-size: 1.25rem;
+  margin-top: 0.4rem;
+  transform: rotate(0.6deg);
+}
+
+nav.crumbs {
+  font-family: 'Patrick Hand', cursive;
+  font-size: 1.1rem;
+  padding: 0.7rem 1rem;
+  border-bottom: 2px solid var(--ink);
+  background: var(--paper);
+}
+
+nav.crumbs a { color: var(--wagon-red); text-decoration: none; border-bottom: 2px dotted var(--wagon-red); }
+nav.crumbs a:hover { background: var(--wagon-red); color: var(--paper); }
+
+/* ---------- Layout ---------- */
+
+main {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 2.5rem 1.2rem 4rem;
+}
+
+/* ---------- Post cards on the index ---------- */
+
+.post-card {
+  background: #fff;
+  border: 3px solid var(--ink);
+  box-shadow: var(--shadow);
+  padding: 1.6rem 1.8rem;
+  margin-bottom: 2.2rem;
+  transform: rotate(-0.4deg);
+  transition: transform 0.15s ease;
+}
+
+.post-card:nth-child(even) { transform: rotate(0.5deg); }
+.post-card:hover { transform: rotate(0deg) translateY(-3px); }
+
+.post-card h2 {
+  font-family: 'Kalam', cursive;
+  font-size: 1.7rem;
+  line-height: 1.25;
+  margin-bottom: 0.3rem;
+}
+
+.post-card h2 a { color: var(--ink); text-decoration: none; border-bottom: none; }
+.post-card h2 a:hover { color: var(--wagon-red); background: none; }
+
+.post-meta {
+  font-family: 'Patrick Hand', cursive;
+  font-size: 1rem;
+  color: var(--wagon-red);
+  margin-bottom: 0.7rem;
+}
+
+.read-more {
+  display: inline-block;
+  font-family: 'Patrick Hand', cursive;
+  font-size: 1.1rem;
+  margin-top: 0.8rem;
+  color: var(--paper);
+  background: var(--ink);
+  padding: 0.15rem 0.8rem;
+  text-decoration: none;
+  border-bottom: none !important;
+  box-shadow: 3px 3px 0 var(--wagon-red);
+}
+
+.read-more:hover { background: var(--wagon-red); box-shadow: 3px 3px 0 var(--ink); }
+
+/* ---------- Article pages ---------- */
+
+article h1 {
+  font-family: 'Kalam', cursive;
+  font-size: clamp(1.9rem, 5vw, 2.8rem);
+  line-height: 1.2;
+  margin-bottom: 0.4rem;
+  transform: rotate(-0.5deg);
+}
+
+article .post-meta { margin-bottom: 2rem; }
+
+article h2 {
+  font-family: 'Kalam', cursive;
+  font-size: 1.5rem;
+  margin: 2.2rem 0 0.7rem;
+  padding-bottom: 0.2rem;
+  border-bottom: 3px solid var(--spiff-gold);
+  display: inline-block;
+  transform: rotate(-0.3deg);
+}
+
+article p { margin-bottom: 1.1rem; }
+
+main a { color: var(--wagon-red); text-decoration: none; border-bottom: 2px dotted var(--wagon-red); }
+main a:hover { background: var(--wagon-red); color: var(--paper); }
+
+/* A "panel" callout box — where we point readers at the real strip */
+.strip-link {
+  border: 3px solid var(--ink);
+  background: var(--paper-dark);
+  box-shadow: var(--shadow);
+  padding: 1rem 1.3rem;
+  margin: 1.4rem 0 1.8rem;
+  font-family: 'Patrick Hand', cursive;
+  font-size: 1.15rem;
+  transform: rotate(-0.4deg);
+}
+
+.strip-link::before {
+  content: "→ SEE THE REAL STRIP: ";
+  font-weight: bold;
+  color: var(--wagon-red);
+}
+
+blockquote {
+  border-left: 5px solid var(--spiff-gold);
+  padding: 0.4rem 0 0.4rem 1.2rem;
+  margin: 1.4rem 0;
+  font-style: italic;
+  color: #4a4540;
+}
+
+/* ---------- Ranked list styling ---------- */
+
+.ranked { counter-reset: rank; list-style: none; }
+
+.ranked > li {
+  counter-increment: rank;
+  position: relative;
+  padding: 0 0 0.4rem 3.6rem;
+  margin-bottom: 1.6rem;
+}
+
+.ranked > li::before {
+  content: "#" counter(rank);
+  position: absolute;
+  left: 0;
+  top: 0.1rem;
+  font-family: 'Kalam', cursive;
+  font-size: 1.5rem;
+  color: var(--paper);
+  background: var(--wagon-red);
+  border: 2px solid var(--ink);
+  box-shadow: 3px 3px 0 var(--ink);
+  padding: 0 0.5rem;
+  transform: rotate(-4deg);
+}
+
+.ranked h3 {
+  font-family: 'Kalam', cursive;
+  font-size: 1.3rem;
+  margin-bottom: 0.3rem;
+}
+
+/* ---------- Section headers on the index ---------- */
+
+.section-title {
+  font-family: 'Kalam', cursive;
+  font-size: 1.6rem;
+  margin: 2.6rem 0 1.4rem;
+  transform: rotate(-0.6deg);
+}
+
+.section-title span {
+  background: var(--spiff-gold);
+  border: 3px solid var(--ink);
+  box-shadow: 4px 4px 0 var(--ink);
+  padding: 0.1rem 0.9rem;
+  display: inline-block;
+}
+
+/* Compact cards for the shorter "plot point" essays */
+.post-card.compact { padding: 1.1rem 1.4rem; margin-bottom: 1.5rem; }
+.post-card.compact h2 { font-size: 1.35rem; }
+.post-card.compact p { font-size: 0.98rem; }
+
+/* Further reading blocks at the end of essays */
+.further-reading {
+  border: 3px dashed var(--ink);
+  background: var(--paper-dark);
+  padding: 1rem 1.4rem;
+  margin-top: 2.2rem;
+}
+
+.further-reading h2 {
+  border-bottom: none;
+  margin: 0 0 0.5rem;
+  font-size: 1.25rem;
+}
+
+.further-reading ul { list-style: none; }
+
+.further-reading li {
+  font-family: 'Patrick Hand', cursive;
+  font-size: 1.08rem;
+  padding-left: 1.4rem;
+  position: relative;
+  margin-bottom: 0.35rem;
+}
+
+.further-reading li::before {
+  content: "✦";
+  position: absolute;
+  left: 0;
+  color: var(--wagon-red);
+}
+
+/* ---------- Decorations (original CSS art, no character likenesses) ---------- */
+
+.divider {
+  text-align: center;
+  font-family: 'Patrick Hand', cursive;
+  font-size: 1.4rem;
+  letter-spacing: 0.6em;
+  color: var(--wagon-red);
+  margin: 2.2rem 0;
+  user-select: none;
+}
+
+/* ---------- Footer ---------- */
+
+footer {
+  border-top: 4px solid var(--ink);
+  background: var(--ink);
+  color: var(--paper);
+  padding: 2rem 1.2rem;
+  text-align: center;
+  font-size: 0.88rem;
+  line-height: 1.6;
+}
+
+footer .foot-title {
+  font-family: 'Kalam', cursive;
+  font-size: 1.2rem;
+  color: var(--spiff-gold);
+  margin-bottom: 0.6rem;
+}
+
+footer a { color: var(--spiff-gold); }
+
+footer .disclaimer {
+  max-width: 640px;
+  margin: 0.5rem auto 0;
+  opacity: 0.85;
+}
+
+@media (max-width: 540px) {
+  .ranked > li { padding-left: 0; padding-top: 2.4rem; }
+  .ranked > li::before { top: 0; }
+}
